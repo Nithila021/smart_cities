@@ -1,42 +1,263 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Chat Interface Styling */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #fdf2f8; /* pink-50 */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.chat-header {
+  background-color: #db2777; /* pink-600 */
+  color: white;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.messages-area {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.message-row {
+  display: flex;
+}
+
+.user-message {
+  justify-content: flex-end;
+}
+
+.bot-message {
+  justify-content: flex-start;
+}
+
+.message-bubble {
+  max-width: 75%;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.user-bubble {
+  background-color: #ec4899; /* pink-500 */
+  color: white;
+  border-bottom-right-radius: 0;
+}
+
+.bot-bubble {
+  background-color: white;
+  border-bottom-left-radius: 0;
+}
+
+.message-text {
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+/* Formatting for bot messages */
+.message-text.formatted p {
+  margin-bottom: 12px;
+}
+
+.message-text.formatted p:last-child {
+  margin-bottom: 0;
+}
+
+.message-text.formatted strong {
+  font-weight: bold;
+}
+
+.message-text.formatted em {
+  font-style: italic;
+}
+
+.empty-state {
   text-align: center;
+  color: #6b7280; /* gray-500 */
+  margin-top: 32px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.example {
+  font-size: 14px;
+  margin-top: 4px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.loading-bubble {
+  background-color: #e5e7eb; /* gray-200 */
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.loading-spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #e5e7eb;
+  border-top-color: #ec4899; /* pink-500 */
+  animation: spin 1s linear infinite;
 }
 
-.card {
-  padding: 2em;
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.read-the-docs {
-  color: #888;
+.loading-text {
+  color: #4b5563; /* gray-700 */
+}
+
+.input-container {
+  border-top: 1px solid #d1d5db; /* gray-300 */
+  padding: 16px;
+  background-color: white;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.message-input {
+  flex: 1;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 9999px;
+  padding: 8px 16px;
+  outline: none;
+  resize: none;
+  max-height: 128px;
+}
+
+.message-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.4); /* pink-400 with opacity */
+}
+
+.send-button {
+  padding: 8px;
+  border-radius: 9999px;
+  background-color: #ec4899; /* pink-500 */
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-button:hover {
+  background-color: #db2777; /* pink-600 */
+}
+
+.send-button.disabled {
+  background-color: #f9a8d4; /* pink-300 */
+  cursor: not-allowed;
+}
+
+/* Graph styling */
+.graph-container {
+  background-color: #f3f4f6; /* gray-100 */
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.graph-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.graph-bars {
+  display: flex;
+  align-items: flex-end;
+  height: 160px;
+  gap: 8px;
+}
+
+.bar-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.bar {
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.bar-label {
+  font-size: 12px;
+  margin-top: 4px;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.graph-notes {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #6b7280; /* gray-500 */
+}
+
+.unsupported-graph {
+  font-style: italic;
+  font-size: 14px;
+}
+/* Visualization Section */
+.visualization-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+}
+
+.map-frame, .chart-frame {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.map-frame {
+  height: 400px;
+}
+
+.chart-frame {
+  padding: 16px;
+}
+
+/* Leaflet Overrides */
+.leaflet-container {
+  background: #fdf2f8 !important;
+}
+
+.leaflet-control-layers-toggle {
+  background: #fff !important;
+}
+
+.leaflet-bar a {
+  background: #fff !important;
+  color: #db2777 !important;
 }

@@ -5,27 +5,22 @@ export default function ChatInput({ onSend, disabled }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (message.trim() && !disabled) {
+    if (message.trim()) {
       onSend(message);
       setMessage('');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="chat-input-box">
       <input
         type="text"
+        placeholder="Ask me something... 💬"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Ask about amenity safety..."
-        className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         disabled={disabled}
       />
-      <button
-        type="submit"
-        disabled={disabled}
-        className="bg-blue-600 text-white rounded-full px-4 py-2 hover:bg-blue-700 disabled:bg-blue-300"
-      >
+      <button type="submit" disabled={disabled}>
         Send
       </button>
     </form>
